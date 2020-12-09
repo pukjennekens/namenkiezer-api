@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import { validateOrReject } from 'class-validator';
 
-import { User } from '../validator/User';
+import { RegisterUser } from '../validator/RegisterUser';
 
 export default async (req: Request, res: Response, next: NextFunction) => {
-  const user = new User();
+  const user = new RegisterUser();
 
   user.username = req.body.username;
   user.password = req.body.password;
