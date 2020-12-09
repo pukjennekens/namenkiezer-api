@@ -28,6 +28,9 @@ export class User {
   @Column({ default: true })
   isActive: boolean;
 
+  @Column('simple-array', { default: ['ROLE_USER'] })
+  roles: string[];
+
   @BeforeInsert()
   @BeforeUpdate()
   async hashPassword() {

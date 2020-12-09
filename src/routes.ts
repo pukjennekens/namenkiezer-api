@@ -1,6 +1,8 @@
 import RegisterController from './controller/auth/RegisterController';
+import LoginController from './controller/auth/LoginController';
 
 import registerValidator from './middleware/auth/registerValidator';
+import loginValidator from './middleware/auth/loginValidator';
 
 interface Route {
   path: string;
@@ -15,6 +17,12 @@ const routes: Route[] = [
     method: 'post',
     middleware: [registerValidator],
     controller: RegisterController,
+  },
+  {
+    path: '/auth/login',
+    method: 'post',
+    middleware: [loginValidator],
+    controller: LoginController,
   },
 ];
 
