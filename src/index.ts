@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import { createConnection } from 'typeorm';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ import { User as UserEntity } from './entity/User';
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 routes.forEach((route) => {
   (app as any)[route.method](
