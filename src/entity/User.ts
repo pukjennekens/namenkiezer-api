@@ -31,6 +31,9 @@ export class User {
   @Column('simple-array', { default: ['ROLE_USER'] })
   roles: string[];
 
+  @Column('int8', { default: 0 })
+  tokenVersion: number;
+
   @BeforeInsert()
   @BeforeUpdate()
   async hashPassword() {
