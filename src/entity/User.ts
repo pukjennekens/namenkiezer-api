@@ -4,8 +4,12 @@ import {
   Column,
   BeforeInsert,
   BeforeUpdate,
+  OneToMany,
+  JoinColumn,
 } from 'typeorm';
 import { genSaltSync, hashSync } from 'bcryptjs';
+
+import { Group } from './Group';
 
 const hashPassword = async (password: string) => {
   const salt = await genSaltSync(10);
@@ -33,6 +37,10 @@ export class User {
 
   @Column('int8', { default: 0 })
   tokenVersion: number;
+
+  @OneToMany(() => Group, (group) => group.owner)
+  @JoinColumn()
+  groups: Group[];
 
   @BeforeInsert()
   @BeforeUpdate()

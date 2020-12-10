@@ -10,6 +10,7 @@ import routes from './routes';
 import logger from './util/logger';
 
 import { User as UserEntity } from './entity/User';
+import { Group as GroupEntity } from './entity/Group';
 
 const app = express();
 
@@ -29,7 +30,7 @@ routes.forEach((route) => {
     const connection = await createConnection({
       type: 'postgres',
       url: process.env.CONNECTION_STRING,
-      entities: [UserEntity],
+      entities: [UserEntity, GroupEntity],
       synchronize: true,
     });
 
