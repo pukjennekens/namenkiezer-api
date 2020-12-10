@@ -1,5 +1,4 @@
 import { Response } from 'express';
-import jwt from 'jsonwebtoken';
 
 import { IRequest } from '../../custom';
 import { writeToken, writeRefreshToken } from '../../util/writeTokens';
